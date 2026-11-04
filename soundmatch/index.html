@@ -1,19 +1,46 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SoundMatch AI - 耳机智能导购助手</title>
-    <meta name="description" content="耳机品类 AI 导购助手 Demo，支持口语化模糊意图转四维结构化条件、多轮克制澄清、确定性商品库召回与防幻觉推荐，配备思考过程可视化面板与评测体系。" />
-    <meta property="og:title" content="SoundMatch AI - 耳机智能导购助手" />
-    <meta property="og:description" content="耳机品类 AI 导购助手 Demo，支持口语化模糊意图转四维结构化条件、多轮克制澄清、确定性商品库召回与防幻觉推荐，配备思考过程可视化面板与评测体系。" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <script type="module" crossorigin src="./assets/index-CgGcy57M.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-D6fetpWf.css">
+<!DOCTYPE html><html lang="zh-CN"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fffaf5">
+    <title>SoundMatch｜像问朋友一样，把耳机挑明白</title>
+    <meta name="description" content="像问朋友一样买耳机，为您挑出最适合的那一件。">
+    <script crossorigin="">import('./assets/index-BtvMUI8e.js').finally(() => {
+            
+    const qiankunLifeCycle = window.moudleQiankunAppLifeCycles && window.moudleQiankunAppLifeCycles['soundmatch-ai'];
+    if (qiankunLifeCycle) {
+      window.proxy.vitemount((props) => qiankunLifeCycle.mount(props));
+      window.proxy.viteunmount((props) => qiankunLifeCycle.unmount(props));
+      window.proxy.vitebootstrap(() => qiankunLifeCycle.bootstrap());
+      window.proxy.viteupdate((props) => qiankunLifeCycle.update(props));
+    }
+  
+          })</script>
+    <link rel="modulepreload" crossorigin="" href="./assets/react-vendor-Dm8ISChp.js">
+    <link rel="stylesheet" crossorigin="" href="./assets/index-seRB8f3z.css">
   </head>
   <body>
-    <div id="root"></div>
-  </body>
-</html>
+    <div id="miniapp-root"></div>
+  
 
+<script>
+  const createDeffer = (hookName) => {
+    const d = new Promise((resolve, reject) => {
+      window.proxy && (window.proxy[`vite${hookName}`] = resolve)
+    })
+    return props => d.then(fn => fn(props));
+  }
+  const bootstrap = createDeffer('bootstrap');
+  const mount = createDeffer('mount');
+  const unmount = createDeffer('unmount');
+  const update = createDeffer('update');
+
+  ;(global => {
+    global.qiankunName = 'soundmatch-ai';
+    global['soundmatch-ai'] = {
+      bootstrap,
+      mount,
+      unmount,
+      update
+    };
+  })(window);
+</script></body></html>
