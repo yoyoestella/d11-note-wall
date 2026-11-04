@@ -1,0 +1,18 @@
+{
+  "_react-vendor-Dm8ISChp.js": {
+    "file": "assets/react-vendor-Dm8ISChp.js",
+    "name": "react-vendor"
+  },
+  "index.html": {
+    "file": "assets/index-BtvMUI8e.js",
+    "name": "index",
+    "src": "index.html",
+    "isEntry": true,
+    "imports": [
+      "_react-vendor-Dm8ISChp.js"
+    ],
+    "css": [
+      "assets/index-seRB8f3z.css"
+    ]
+  }
+}
