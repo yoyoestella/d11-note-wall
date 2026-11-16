@@ -1,0 +1,56 @@
+<!DOCTYPE html><html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>休食五组 · 新鲜零食市集 周环比看板</title><style>
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,'PingFang SC',sans-serif;background:#fafafa;color:#1a1a1a;padding:20px}
+h1{font-size:20px;margin-bottom:4px}.sub{color:#999;font-size:12px;margin-bottom:16px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+.kpi{background:#fff;border-radius:12px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.kpi .l{font-size:12px;color:#888}.kpi .v{font-size:24px;font-weight:700;margin:4px 0}
+.d{font-size:12px;font-weight:600}.g{color:#e11d48}.b{color:#16a34a}
+.card{background:#fff;border-radius:12px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);margin-bottom:14px}
+.card h3{font-size:14px;margin-bottom:6px}.lg{font-size:12px;color:#666;margin-bottom:8px}
+canvas{width:100%;height:280px}
+.note{background:#fff7ed;border-radius:10px;padding:10px 14px;font-size:12px;color:#9a3412;margin-bottom:14px}
+@media(max-width:600px){.grid{grid-template-columns:repeat(2,1fr)}.kpi .v{font-size:20px}}
+</style></head><body>
+<h1>休食五组 · 新鲜零食市集 周环比</h1>
+<div class="sub">本周 11/10–11/16 vs 上周 11/03–11/09 · 生成于 2026-11-16 15:05</div>
+<div class="note">口径：发文笔记=话题发文看板（原口径）；曝光/阅读/DGMV=交易宽表·挂车笔记·T+1，数据至 11-15；11-16 当天数据待明日批次，纳入后环比还会变化。</div>
+<div class="grid"><div class="kpi" id="k1"></div><div class="kpi" id="k2"></div><div class="kpi" id="k3"></div><div class="kpi" id="k4"></div><div class="kpi" id="k5"></div><div class="kpi" id="k6"></div></div>
+<div class="card"><h3>每日发文笔记</h3><div class="lg" id="c1lg"></div><canvas id="c1"></canvas></div>
+<div class="card"><h3>每日曝光</h3><div class="lg" id="c2lg"></div><canvas id="c2"></canvas></div>
+<div class="card"><h3>每日阅读</h3><div class="lg" id="c3lg"></div><canvas id="c3"></canvas></div>
+<div class="card"><h3>每日 DGMV</h3><div class="lg" id="c4lg"></div><canvas id="c4"></canvas></div>
+<script>const DATA={"meta": {"generated": "2026-11-16 15:05", "note": "数据批次T+1: 成交/曝光/阅读至11-15; 11-16待明日批次", "scope": "休食五组"}, "weeks": {"last": {"label": "上周 11/03-11/09", "days": [{"d": "2026-11-03", "notes": 112, "imp": 263659.0, "read": 21213.0, "dgmv": 48697.0}, {"d": "2026-11-04", "notes": 190, "imp": 1063445.0, "read": 84196.0, "dgmv": 68323.0}, {"d": "2026-11-05", "notes": 235, "imp": 2017605.0, "read": 147709.0, "dgmv": 100336.0}, {"d": "2026-11-06", "notes": 219, "imp": 671230.0, "read": 58789.0, "dgmv": 100981.0}, {"d": "2026-11-07", "notes": 181, "imp": 833553.0, "read": 62538.0, "dgmv": 97579.0}, {"d": "2026-11-08", "notes": 141, "imp": 271114.0, "read": 20311.0, "dgmv": 40669.0}, {"d": "2026-11-09", "notes": 248, "imp": 796968.0, "read": 64154.0, "dgmv": 135277.0}], "notes": 1326, "imp": 5917574.0, "read": 458910.0, "dgmv": 591862.0, "gpm": 100.02, "ctr": 7.76}, "this": {"label": "本周 11/10-11/16", "days": [{"d": "2026-11-10", "notes": 200, "imp": 619614.0, "read": 39236.0, "dgmv": 145372.0}, {"d": "2026-11-11", "notes": 258, "imp": 789719.0, "read": 40981.0, "dgmv": 143008.0}, {"d": "2026-11-12", "notes": 224, "imp": 836679.0, "read": 48153.0, "dgmv": 118184.0}, {"d": "2026-11-13", "notes": 282, "imp": 353201.0, "read": 27268.0, "dgmv": 129738.0}, {"d": "2026-11-14", "notes": 232, "imp": 257355.0, "read": 22711.0, "dgmv": 153109.0}, {"d": "2026-11-15", "notes": 194, "imp": 105274.0, "read": 8572.0, "dgmv": 76911.0}], "notes": 1390, "imp": 2961842.0, "read": 186921.0, "dgmv": 766322.0, "gpm": 258.73, "ctr": 6.31}}, "delta": {"notes": 4.8, "imp": -49.9, "read": -59.3, "dgmv": 29.5, "gpm": 158.7, "ctr": -18.7}};
+const F=n=>Number(n||0).toLocaleString('zh-CN',{maximumFractionDigits:1});
+function kpi(id,label,v,delta,invert){
+  const up=delta>=0; const good=invert?!up:up;
+  document.getElementById(id).innerHTML='<div class="l">'+label+'</div><div class="v">'+v+'</div><div class="d '+(good?'g':'b')+'">'+(up?'▲ +':'▼ ')+delta+'% 环比上周</div>';
+}
+kpi('k1','发文笔记',F(DATA.weeks.this.notes),DATA.delta.notes);
+kpi('k2','曝光',F(DATA.weeks.this.imp),DATA.delta.imp);
+kpi('k3','阅读',F(DATA.weeks.this.read),DATA.delta.read);
+kpi('k4','DGMV','¥'+F(DATA.weeks.this.dgmv),DATA.delta.dgmv);
+kpi('k5','GPM',F(DATA.weeks.this.gpm),DATA.delta.gpm);
+kpi('k6','阅读率',DATA.weeks.this.ctr+'%',DATA.delta.ctr,true);
+function line(canvas,labels,series,colors,ytitle){
+  const c=document.getElementById(canvas),x=c.getContext('2d');
+  const W=c.width=c.parentElement.clientWidth*2,H=c.height=560;
+  const P={l:150,r:40,t:60,b:70};const maxV=Math.max(...series.flatMap(s=>s.data))*1.15||1;
+  x.font='24px sans-serif';x.textAlign='right';
+  for(let g=0;g<=5;g++){const y=P.t+(H-P.t-P.b)*g/5;x.strokeStyle='#eee';x.beginPath();x.moveTo(P.l,y);x.lineTo(W-P.r,y);x.stroke();x.fillStyle='#999';x.fillText(F(maxV*(5-g)/5),P.l-12,y+8)}
+  const X=i=>P.l+(W-P.l-P.r)*(series[0].data.length>1?i/(series[0].data.length-1):0.5);
+  x.textAlign='center';labels.forEach((lb,i)=>{if(i%Math.ceil(labels.length/12)===0){x.fillStyle='#999';x.fillText(lb.slice(5),X(i),H-P.b+35)}});
+  series.forEach((s,si)=>{x.strokeStyle=colors[si];x.lineWidth=4;x.beginPath();s.data.forEach((v,i)=>{const y=P.t+(H-P.t-P.b)*(1-v/maxV);i?x.lineTo(X(i),y):x.moveTo(X(i),y)});x.stroke();
+    s.data.forEach((v,i)=>{const y=P.t+(H-P.t-P.b)*(1-v/maxV);x.fillStyle=colors[si];x.beginPath();x.arc(X(i),y,6,0,7);x.fill()})});
+  x.textAlign='left';let lx=P.l;const lg=document.getElementById(canvas+'lg');
+  series.forEach((s,si)=>{lg.innerHTML+='<span style="color:'+colors[si]+'">● '+s.name+'</span> '});
+}
+const dl=DATA.weeks.last.days.map(x=>x.d),tl=DATA.weeks.this.days.map(x=>x.d);
+const both=[...new Set([...dl,...tl])].sort();
+const pick=(days,k)=>both.map(d=>{const f=days.find(x=>x.d===d);return f?f[k]:null});
+function dual(canvas,key,name){
+  document.getElementById(canvas+'lg').innerHTML='';
+  line(canvas,both,[{name:'上周',data:pick(DATA.weeks.last.days,key)},{name:'本周',data:pick(DATA.weeks.this.days,key)}],['#94a3b8','#e11d48']);
+}
+dual('c1','notes','发文笔记');dual('c2','imp','曝光');dual('c3','read','阅读');dual('c4','dgmv','DGMV');
+</script></body></html>
