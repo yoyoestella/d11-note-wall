@@ -1,64 +1,63 @@
 <!DOCTYPE html><html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>新鲜零食市集 · 成交与流量周环比</title><style>
+<title>新鲜零食市集 · 三维度周环比</title><style>
 *{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,'PingFang SC',sans-serif;background:#fafafa;color:#1a1a1a;padding:20px}
-h1{font-size:20px;margin-bottom:4px}.sub{color:#999;font-size:12px;margin-bottom:16px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+h1{font-size:20px;margin-bottom:4px}.sub{color:#999;font-size:12px;margin-bottom:12px}
+.bar{display:flex;gap:8px;margin-bottom:14px}.bar button{flex:1;padding:10px;border:1px solid #ddd;border-radius:10px;background:#fff;font-size:14px;cursor:pointer}
+.bar button.on{background:#e11d48;color:#fff;border-color:#e11d48;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px}
 .kpi{background:#fff;border-radius:12px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,.06)}
-.kpi .l{font-size:12px;color:#888}.kpi .v{font-size:24px;font-weight:700;margin:4px 0}
+.kpi .l{font-size:12px;color:#888}.kpi .v{font-size:22px;font-weight:700;margin:4px 0}
 .d{font-size:12px;font-weight:600}.g{color:#e11d48}.b{color:#16a34a}
 .card{background:#fff;border-radius:12px;padding:16px;box-shadow:0 1px 3px rgba(0,0,0,.06);margin-bottom:14px}
 .card h3{font-size:14px;margin-bottom:6px}.lg{font-size:12px;color:#666;margin-bottom:8px}
-canvas{width:100%;height:280px}
+canvas{width:100%;height:260px}
 table{width:100%;border-collapse:collapse;font-size:13px}
 th,td{padding:8px 10px;text-align:right;border-bottom:1px solid #f0f0f0}th{color:#888;font-weight:500}td:first-child,th:first-child{text-align:left}
 .note{background:#fff7ed;border-radius:10px;padding:10px 14px;font-size:12px;color:#9a3412;margin-bottom:14px}
-@media(max-width:600px){.grid{grid-template-columns:repeat(2,1fr)}.kpi .v{font-size:20px}}
+@media(max-width:600px){.grid{grid-template-columns:repeat(2,1fr)}.kpi .v{font-size:19px}}
 </style></head><body>
-<h1>新鲜零食市集 · 成交与流量周环比</h1>
-<div class="sub">本周 11/10–11/16 vs 上周 11/03–11/09 · 生成于 2026-11-16 15:45</div>
-<div class="note">口径：鹰眼笔记池 204947「新鲜零食市集-活动商品笔记」同口径（话题绑定+作弊过滤），DGMV/件数/曝光/阅读均按<b>统计日期</b>（T+1）聚合，数据至 11-15；11-16 待明日批次。发文笔记=话题发文看板原口径。</div>
-<div class="grid"><div class="kpi" id="k1"></div><div class="kpi" id="k2"></div><div class="kpi" id="k3"></div><div class="kpi" id="k4"></div><div class="kpi" id="k5"></div><div class="kpi" id="k6"></div></div>
-<div class="card"><h3>每日四指标明细表</h3><table id="tbl"></table></div>
+<h1>新鲜零食市集 · 周环比看板</h1>
+<div class="sub">本周 11/10–11/16 vs 上周 11/03–11/09 · 2026-11-16 16:20</div>
+<div class="note">口径:鹰眼笔记池204947同口径(话题绑定+作弊过滤),按统计日期T+1至11-15;11-16待明日批次。诺亚=诺亚(单恩浩)名下商家;休食五组=五组11位AM名下商家;全量=其他商家</div>
+<div class="bar" id="scopebar"></div>
+<div class="grid"><div class="kpi" id="k1"></div><div class="kpi" id="k2"></div><div class="kpi" id="k3"></div><div class="kpi" id="k4"></div></div>
+<div class="card"><h3>每日明细（DGMV / 件数 / 曝光 / 阅读）</h3><table id="tbl"></table></div>
 <div class="card"><h3>每日 DGMV</h3><div class="lg" id="c1lg"></div><canvas id="c1"></canvas></div>
 <div class="card"><h3>每日曝光</h3><div class="lg" id="c3lg"></div><canvas id="c3"></canvas></div>
 <div class="card"><h3>每日成交件数</h3><div class="lg" id="c2lg"></div><canvas id="c2"></canvas></div>
 <div class="card"><h3>每日阅读</h3><div class="lg" id="c4lg"></div><canvas id="c4"></canvas></div>
-<script>const DATA={"meta": {"generated": "2026-11-16 15:05", "note": "发文=话题发文看板原口径; 曝光/阅读/DGMV=鹰眼笔记池204947同口径交易宽表·按成交日·T+1至11-15; 11-16待明日批次", "scope": "休食五组"}, "weeks": {"last": {"label": "上周 11/03-11/09", "days": [{"d": "2026-11-03", "notes": 112, "imp": 263659.0, "read": 21213.0, "dgmv": 48697.0}, {"d": "2026-11-04", "notes": 190, "imp": 1063445.0, "read": 84196.0, "dgmv": 68323.0}, {"d": "2026-11-05", "notes": 235, "imp": 2017605.0, "read": 147709.0, "dgmv": 100336.0}, {"d": "2026-11-06", "notes": 219, "imp": 671230.0, "read": 58789.0, "dgmv": 100981.0}, {"d": "2026-11-07", "notes": 181, "imp": 833553.0, "read": 62538.0, "dgmv": 97579.0}, {"d": "2026-11-08", "notes": 141, "imp": 271114.0, "read": 20311.0, "dgmv": 40669.0}, {"d": "2026-11-09", "notes": 248, "imp": 796968.0, "read": 64154.0, "dgmv": 135277.0}], "notes": 1326, "imp": 5917574.0, "read": 458910.0, "dgmv": 591862.0, "gpm": 100.02, "ctr": 7.76, "dgmv_days": {"2026-11-03": {"dgmv": 7418.03, "orders": 131}, "2026-11-04": {"dgmv": 12377.35, "orders": 339}, "2026-11-05": {"dgmv": 22486.46, "orders": 598}, "2026-11-06": {"dgmv": 21925.73, "orders": 510}, "2026-11-07": {"dgmv": 24230.3, "orders": 511}, "2026-11-08": {"dgmv": 24341.61, "orders": 514}, "2026-11-09": {"dgmv": 29913.04, "orders": 569}}, "dgmv_true": 142692.52, "orders": 3172, "flow": {"2026-11-03": {"dgmv": 7418.0, "orders": 131, "imp": 296439, "read": 24315}, "2026-11-04": {"dgmv": 12377.0, "orders": 339, "imp": 478857, "read": 35369}, "2026-11-05": {"dgmv": 22486.0, "orders": 598, "imp": 940193, "read": 71771}, "2026-11-06": {"dgmv": 21926.0, "orders": 510, "imp": 949638, "read": 71434}, "2026-11-07": {"dgmv": 24230.0, "orders": 511, "imp": 935452, "read": 69974}, "2026-11-08": {"dgmv": 24342.0, "orders": 514, "imp": 889357, "read": 70518}, "2026-11-09": {"dgmv": 29913.0, "orders": 569, "imp": 1198235, "read": 94942}}, "imp_true": 5688171, "read_true": 438323}, "this": {"label": "本周 11/10-11/16", "days": [{"d": "2026-11-10", "notes": 200, "imp": 619614.0, "read": 39236.0, "dgmv": 145372.0}, {"d": "2026-11-11", "notes": 258, "imp": 789719.0, "read": 40981.0, "dgmv": 143008.0}, {"d": "2026-11-12", "notes": 224, "imp": 836679.0, "read": 48153.0, "dgmv": 118184.0}, {"d": "2026-11-13", "notes": 282, "imp": 353201.0, "read": 27268.0, "dgmv": 129738.0}, {"d": "2026-11-14", "notes": 232, "imp": 257355.0, "read": 22711.0, "dgmv": 153109.0}, {"d": "2026-11-15", "notes": 194, "imp": 105274.0, "read": 8572.0, "dgmv": 76911.0}], "notes": 1390, "imp": 2961842.0, "read": 186921.0, "dgmv": 766322.0, "gpm": 258.73, "ctr": 6.31, "dgmv_days": {"2026-11-10": {"dgmv": 29582.64, "orders": 610}, "2026-11-11": {"dgmv": 37671.95, "orders": 787}, "2026-11-12": {"dgmv": 38021.86, "orders": 723}, "2026-11-13": {"dgmv": 29484.8, "orders": 589}, "2026-11-14": {"dgmv": 43728.97, "orders": 1093}, "2026-11-15": {"dgmv": 40991.5, "orders": 1155}}, "dgmv_true": 219481.72, "orders": 4957, "flow": {"2026-11-10": {"dgmv": 29583.0, "orders": 610, "imp": 1271875, "read": 91499}, "2026-11-11": {"dgmv": 37672.0, "orders": 787, "imp": 1491171, "read": 97975}, "2026-11-12": {"dgmv": 38022.0, "orders": 723, "imp": 1682222, "read": 102034}, "2026-11-13": {"dgmv": 29485.0, "orders": 589, "imp": 1384757, "read": 95678}, "2026-11-14": {"dgmv": 43729.0, "orders": 1093, "imp": 2069042, "read": 190646}, "2026-11-15": {"dgmv": 40992.0, "orders": 1155, "imp": 1574899, "read": 141167}}, "imp_true": 9473966, "read_true": 718999}}, "delta": {"notes": 4.8, "imp": -49.9, "read": -59.3, "dgmv": 29.5, "gpm": 158.7, "ctr": -18.7, "dgmv_true": 53.8, "orders": 56.3, "imp_true": 66.6, "read_true": 64.0}};
+<script>const DATA={"meta": {"generated": "2026-11-16 16:20", "note": "口径:鹰眼笔记池204947同口径(话题绑定+作弊过滤),按统计日期T+1至11-15;11-16待明日批次。诺亚=诺亚(单恩浩)名下商家;休食五组=五组11位AM名下商家;全量=其他商家"}, "scopes": {"nuoya": {"last": {"days": {"2026-11-03": {"dgmv": 243.13, "orders": 5, "imp": 10324.0, "read": 890.0}, "2026-11-04": {"dgmv": 282.67, "orders": 6, "imp": 9797.0, "read": 1054.0}, "2026-11-05": {"dgmv": 172.5, "orders": 2, "imp": 7213.0, "read": 376.0}, "2026-11-06": {"dgmv": 328.81, "orders": 8, "imp": 9335.0, "read": 1040.0}, "2026-11-07": {"dgmv": 277.32, "orders": 4, "imp": 4664.0, "read": 579.0}, "2026-11-08": {"dgmv": 262.26, "orders": 8, "imp": 4760.0, "read": 780.0}, "2026-11-09": {"dgmv": 1195.64, "orders": 20, "imp": 24726.0, "read": 2094.0}}, "dgmv": 2762.33, "orders": 53, "imp": 70819.0, "read": 6813.0}, "this": {"days": {"2026-11-10": {"dgmv": 1559.03, "orders": 32, "imp": 61281.0, "read": 4570.0}, "2026-11-11": {"dgmv": 1550.3, "orders": 41, "imp": 64635.0, "read": 4371.0}, "2026-11-12": {"dgmv": 1996.89, "orders": 37, "imp": 66231.0, "read": 4896.0}, "2026-11-13": {"dgmv": 2311.98, "orders": 41, "imp": 71178.0, "read": 6134.0}, "2026-11-14": {"dgmv": 2968.11, "orders": 65, "imp": 77417.0, "read": 9033.0}, "2026-11-15": {"dgmv": 3948.22, "orders": 64, "imp": 95473.0, "read": 10308.0}}, "dgmv": 14334.53, "orders": 280, "imp": 436215.0, "read": 39312.0}, "delta": {"dgmv": 418.9, "orders": 428.3, "imp": 516.0, "read": 477.0}}, "group5": {"last": {"days": {"2026-11-03": {"dgmv": 5010.65, "orders": 70, "imp": 187584.0, "read": 16171.0}, "2026-11-04": {"dgmv": 10655.97, "orders": 286, "imp": 356933.0, "read": 27236.0}, "2026-11-05": {"dgmv": 20859.42, "orders": 522, "imp": 817791.0, "read": 64366.0}, "2026-11-06": {"dgmv": 20130.59, "orders": 442, "imp": 815301.0, "read": 62254.0}, "2026-11-07": {"dgmv": 22267.77, "orders": 439, "imp": 816723.0, "read": 61749.0}, "2026-11-08": {"dgmv": 22373.35, "orders": 428, "imp": 767871.0, "read": 62198.0}, "2026-11-09": {"dgmv": 25967.1, "orders": 447, "imp": 1016038.0, "read": 81948.0}}, "dgmv": 127264.85, "orders": 2634, "imp": 4778241.0, "read": 375922.0}, "this": {"days": {"2026-11-10": {"dgmv": 24856.44, "orders": 463, "imp": 990805.0, "read": 71906.0}, "2026-11-11": {"dgmv": 30805.45, "orders": 591, "imp": 1215981.0, "read": 80425.0}, "2026-11-12": {"dgmv": 32703.84, "orders": 563, "imp": 1441115.0, "read": 85652.0}, "2026-11-13": {"dgmv": 23639.79, "orders": 433, "imp": 1085610.0, "read": 74606.0}, "2026-11-14": {"dgmv": 24731.1, "orders": 433, "imp": 968729.0, "read": 80290.0}, "2026-11-15": {"dgmv": 27885.96, "orders": 510, "imp": 931358.0, "read": 88868.0}}, "dgmv": 164622.58, "orders": 2993, "imp": 6633598.0, "read": 481747.0}, "delta": {"dgmv": 29.4, "orders": 13.6, "imp": 38.8, "read": 28.2}}, "all": {"last": {"days": {"2026-11-03": {"dgmv": 2164.25, "orders": 56, "imp": 76580.0, "read": 5368.0}, "2026-11-04": {"dgmv": 1438.71, "orders": 47, "imp": 69306.0, "read": 4335.0}, "2026-11-05": {"dgmv": 1454.54, "orders": 74, "imp": 88922.0, "read": 5323.0}, "2026-11-06": {"dgmv": 1466.33, "orders": 60, "imp": 79051.0, "read": 4291.0}, "2026-11-07": {"dgmv": 1685.21, "orders": 68, "imp": 83530.0, "read": 5223.0}, "2026-11-08": {"dgmv": 1706.0, "orders": 78, "imp": 87718.0, "read": 5064.0}, "2026-11-09": {"dgmv": 2750.3, "orders": 102, "imp": 126070.0, "read": 8084.0}}, "dgmv": 12665.34, "orders": 485, "imp": 611177.0, "read": 37688.0}, "this": {"days": {"2026-11-10": {"dgmv": 3167.17, "orders": 115, "imp": 166647.0, "read": 10167.0}, "2026-11-11": {"dgmv": 5316.2, "orders": 155, "imp": 173904.0, "read": 10417.0}, "2026-11-12": {"dgmv": 3321.13, "orders": 123, "imp": 145864.0, "read": 9132.0}, "2026-11-13": {"dgmv": 3533.03, "orders": 115, "imp": 184035.0, "read": 11583.0}, "2026-11-14": {"dgmv": 16029.76, "orders": 595, "imp": 975839.0, "read": 97214.0}, "2026-11-15": {"dgmv": 9157.32, "orders": 581, "imp": 472674.0, "read": 35853.0}}, "dgmv": 40524.61, "orders": 1684, "imp": 2118963.0, "read": 174366.0}, "delta": {"dgmv": 220.0, "orders": 247.2, "imp": 246.7, "read": 362.7}}}};
+let SCOPE='group5';
 const F=n=>Number(n||0).toLocaleString('zh-CN',{maximumFractionDigits:1});
-function kpi(id,label,v,delta,invert){
-  const up=delta>=0; const good=invert?!up:up;
-  document.getElementById(id).innerHTML='<div class="l">'+label+'</div><div class="v">'+v+'</div><div class="d '+(good?'g':'b')+'">'+(up?'▲ +':'▼ ')+delta+'% 环比上周</div>';
+function render(){
+  const S=DATA.scopes[SCOPE],L=S.last,T=S.this,D=S.delta;
+  document.getElementById('scopebar').innerHTML=['nuoya','group5','all'].map(k=>'<button class="'+(k===SCOPE?'on':'')+'" data-k="'+k+'">'+({nuoya:'诺亚个人',group5:'休食五组',all:'全量商家'})[k]+'</button>').join('');
+  document.querySelectorAll('#scopebar button').forEach(b=>b.onclick=()=>{SCOPE=b.dataset.k;render()});
+  function kpi(id,label,v,dv){const up=dv>=0;document.getElementById(id).innerHTML='<div class="l">'+label+'</div><div class="v">'+v+'</div><div class="d '+(up?'g':'b')+'">'+(up?'▲ +':'▼ ')+dv+'% 环比上周</div>'}
+  kpi('k1','DGMV','¥'+F(T.dgmv),D.dgmv);kpi('k2','成交件数',F(T.orders),D.orders);
+  kpi('k3','曝光',F(T.imp),D.imp);kpi('k4','阅读',F(T.read),D.read);
+  const days=[...new Set([...Object.keys(L.days),...Object.keys(T.days)])].sort();
+  let tb='<tr><th>日期</th><th>DGMV</th><th>件数</th><th>曝光</th><th>阅读</th></tr>';
+  days.forEach(d=>{const s=L.days[d]||T.days[d];const w=L.days[d]?'上':'本';
+    tb+='<tr><td>'+d.slice(5)+' ('+w+')</td><td>¥'+F(s.dgmv)+'</td><td>'+F(s.orders)+'</td><td>'+F(s.imp)+'</td><td>'+F(s.read)+'</td></tr>'});
+  document.getElementById('tbl').innerHTML=tb;
+  function chart(canvas,key,name){
+    document.getElementById(canvas+'lg').innerHTML='';
+    const c=document.getElementById(canvas),x=c.getContext('2d');
+    const W=c.width=c.parentElement.clientWidth*2,H=c.height=560;
+    const P={l:150,r:40,t:60,b:70};
+    const sL=days.map(d=>L.days[d]?L.days[d][key]:null),sT=days.map(d=>T.days[d]?T.days[d][key]:null);
+    const maxV=Math.max(...sL.concat(sT).filter(v=>v!=null))*1.15||1;
+    x.font='24px sans-serif';x.textAlign='right';
+    for(let g=0;g<=5;g++){const y=P.t+(H-P.t-P.b)*g/5;x.strokeStyle='#eee';x.beginPath();x.moveTo(P.l,y);x.lineTo(W-P.r,y);x.stroke();x.fillStyle='#999';x.fillText(F(maxV*(5-g)/5),P.l-12,y+8)}
+    const X=i=>P.l+(W-P.l-P.r)*(days.length>1?i/(days.length-1):0.5);
+    x.textAlign='center';days.forEach((lb,i)=>{if(i%Math.ceil(days.length/12)===0){x.fillStyle='#999';x.fillText(lb.slice(5),X(i),H-P.b+35)}});
+    [[sL,'#94a3b8','上周'],[sT,'#e11d48','本周']].forEach(([s,col,nm])=>{x.strokeStyle=col;x.lineWidth=4;x.beginPath();let st=false;
+      s.forEach((v,i)=>{if(v==null)return;const y=P.t+(H-P.t-P.b)*(1-v/maxV);st?x.lineTo(X(i),y):(x.moveTo(X(i),y),st=true)});x.stroke();
+      s.forEach((v,i)=>{if(v==null)return;const y=P.t+(H-P.t-P.b)*(1-v/maxV);x.fillStyle=col;x.beginPath();x.arc(X(i),y,6,0,7);x.fill()});
+      document.getElementById(canvas+'lg').innerHTML+='<span style="color:'+col+'">● '+nm+'</span> '});
+  }
+  chart('c1','dgmv','DGMV');chart('c2','orders','件数');chart('c3','imp','曝光');chart('c4','read','阅读');
 }
-kpi('k1','DGMV','¥'+F(DATA.weeks.this.dgmv_true),DATA.delta.dgmv_true);
-kpi('k2','成交件数',F(DATA.weeks.this.orders),DATA.delta.orders);
-kpi('k3','曝光',F(DATA.weeks.this.imp_true),DATA.delta.imp_true);
-kpi('k4','阅读',F(DATA.weeks.this.read_true),DATA.delta.read_true);
-kpi('k5','发文笔记',F(DATA.weeks.this.notes),DATA.delta.notes);
-kpi('k6','阅读率',F(DATA.weeks.this.read_true/DATA.weeks.this.imp_true*100)+'%',DATA.delta.read_true-DATA.delta.imp_true,true);
-function line(canvas,labels,series,colors){
-  const c=document.getElementById(canvas),x=c.getContext('2d');
-  const W=c.width=c.parentElement.clientWidth*2,H=c.height=560;
-  const P={l:150,r:40,t:60,b:70};const maxV=Math.max(...series.flatMap(s=>s.data.filter(v=>v!=null)))*1.15||1;
-  x.font='24px sans-serif';x.textAlign='right';
-  for(let g=0;g<=5;g++){const y=P.t+(H-P.t-P.b)*g/5;x.strokeStyle='#eee';x.beginPath();x.moveTo(P.l,y);x.lineTo(W-P.r,y);x.stroke();x.fillStyle='#999';x.fillText(F(maxV*(5-g)/5),P.l-12,y+8)}
-  const X=i=>P.l+(W-P.l-P.r)*(series[0].data.length>1?i/(series[0].data.length-1):0.5);
-  x.textAlign='center';labels.forEach((lb,i)=>{if(i%Math.ceil(labels.length/12)===0){x.fillStyle='#999';x.fillText(lb.slice(5),X(i),H-P.b+35)}});
-  series.forEach((s,si)=>{x.strokeStyle=colors[si];x.lineWidth=4;x.beginPath();let started=false;
-    s.data.forEach((v,i)=>{if(v==null)return;const y=P.t+(H-P.t-P.b)*(1-v/maxV);started?x.lineTo(X(i),y):(x.moveTo(X(i),y),started=true)});x.stroke();
-    s.data.forEach((v,i)=>{if(v==null)return;const y=P.t+(H-P.t-P.b)*(1-v/maxV);x.fillStyle=colors[si];x.beginPath();x.arc(X(i),y,6,0,7);x.fill()})});
-  const lg=document.getElementById(canvas+'lg');
-  series.forEach((s,si)=>{lg.innerHTML+='<span style="color:'+colors[si]+'">● '+s.name+'</span> '});
-}
-const flL=DATA.weeks.last.flow,flT=DATA.weeks.this.flow;
-const days=[...new Set([...Object.keys(flL),...Object.keys(flT)])].sort();
-function dual(canvas,key,name){
-  document.getElementById(canvas+'lg').innerHTML='';
-  line(canvas,days,[{name:'上周',data:days.map(d=>flL[d]?flL[d][key]:null)},{name:'本周',data:days.map(d=>flT[d]?flT[d][key]:null)}],['#94a3b8','#e11d48']);
-}
-dual('c1','dgmv','DGMV');dual('c2','orders','成交件数');dual('c3','imp','曝光');dual('c4','read','阅读');
-// combined table
-let tb='<tr><th>日期</th><th>DGMV</th><th>件数</th><th>曝光</th><th>阅读</th></tr>';
-days.forEach(d=>{const s=(flL[d]||flT[d]);const w=flL[d]?'上':'本';
-  tb+='<tr><td>'+d.slice(5)+' ('+w+')</td><td>¥'+F(s.dgmv)+'</td><td>'+F(s.orders)+'</td><td>'+F(s.imp)+'</td><td>'+F(s.read)+'</td></tr>'});
-document.getElementById('tbl').innerHTML=tb;
+render();
 </script></body></html>
